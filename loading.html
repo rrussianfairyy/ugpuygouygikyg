@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loading...</title>
+  <!-- Favicon Link -->
+  <link rel="icon" href="favicon/favicon.jpg" type="image/jpg">
+  <style>
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #loading-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      text-align: center;
+      color: #2C59CA;
+      font-family: sans-serif;
+    }
+
+    #progress-bar {
+      width: 300px;
+      height: 20px;
+      background: rgba(0, 35, 149, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    #progress {
+      height: 100%;
+      width: 0%;
+      background: #2C59CA;
+      transition: width 0.3s ease;
+    }
+
+    @media (max-width: 400px) {
+      #progress-bar {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div id="loading-container">
+    <div id="loading-text">Loading...</div>
+    <div id="progress-bar">
+      <div id="progress"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/particles.min.js"></script> <!-- Make sure the path is correct -->
+  <script src="js/custom.js"></script> <!-- Ensure this file exists -->
+
+  <script>
+    const loadingText = document.getElementById('loading-text');
+    const progress = document.getElementById('progress');
+    const messages = [
+      "Loading analytics...",
+      "Loading images...",
+      "Loading cool stuff...",
+      "Almost there..."
+    ];
+
+    // Get the destination page from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const destination = urlParams.get('page') || 'index.html';
+    
+    let percent = 0;
+    let index = 0;
+
+    // Regular loading process
+    const interval = setInterval(() => {
+      if (percent >= 100) {
+        clearInterval(interval);
+        
+        // Set a flag to indicate this page has been loaded through the loading screen
+        if (destination === 'index.html') {
+          sessionStorage.setItem("loadedIndex", "true");
+        } else if (destination === 'projects.html') {
+          sessionStorage.setItem("loadedProjects", "true");
+        } else if (destination === 'gallery.html') {
+          sessionStorage.setItem("loadedGallery", "true");
+        }
+
+        // Redirect to the destination page after a short delay
+        setTimeout(() => {
+          window.location.href = destination;
+        }, 100); // optional short delay to see full bar
+      } else {
+        percent += 10;
+        progress.style.width = percent + "%";
+
+        if (percent % 20 === 0 && index < messages.length) {
+          loadingText.innerText = messages[index];
+          index++;
+        }
+      }
+    }, 150);
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-color: #F2F2F2; /* Light grey background */
+    font-family: Arial, sans-serif; /* Default font for the body */
+    padding-top: 120px; /* Make room for fixed header */
+    min-height: 100vh; /* Ensure the body height covers the full viewport */
+}
+
+/* Customizable Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* More spacing */
+    z-index: 100;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+/* Customizable Header Text */
+.name {
+    font-family: Helvetica, sans-serif;
+    font-size: clamp(18px, 2vw, 20px);
+    font-weight: bold;
+    color: #2C59CA;
+    text-decoration: none;
+}
+
+.nav-link {
+    font-family: Helvetica, sans-serif;
+    font-size: clamp(14px, 1.8vw, 14px);
+    color: #2C59CA;
+    text-decoration: none;
+    margin-left: clamp(15px, 3vw, 30px);
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Adjust navigation for smaller screens */
+@media (max-width: 768px) {
+    .nav-link {
+        margin-left: 15px; /* Reduce spacing */
+        font-size: 16px; /* Smaller font size */
+    }
+}
+
+/* Gallery Title */
+.gallery-title {
+    font-family: serif;
+    font-size: 130px; /* Huge text */
+    font-weight: bolder;
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 0px; /* Adjust top spacing */
+    margin-bottom: 50px; /* Adjust spacing below it */
+    color: #2C59CA;
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+@media (max-width: 768px) {
+    .gallery-title {
+        font-size: 80px; /* Smaller font size for tablets */
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-title {
+        font-size: 50px; /* Smaller font size for phones */
+        margin-left: 20px;
+    }
+}
+
+/* Subtitle */
+.subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 66px;
+    margin-top: -40px; /* Adjust spacing below title */
+    margin-bottom: 30px; /* Adjust spacing below */
+    color: #2C59CA;
+}
+
+@media (max-width: 768px) {
+    .subtitle {
+        font-size: 24px; /* Smaller font size for tablets */
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .subtitle {
+        font-size: 18px; /* Smaller font size for phones */
+        margin-left: 20px;
+    }
+}
+
+/* Gallery Section Styling */
+.user-photos {
+    column-count: 4; /* 4 items per row */
+    column-gap: 20px; /* Space between columns */
+    width: 90%;
+    margin: auto;
+}
+
+.photo {
+    display: inline-block; /* Ensures content flows within columns */
+    width: 100%;
+    margin-bottom: 20px; /* Space between items */
+}
+
+.photo img, .photo video {
+    width: 100%; /* Full width */
+    height: auto; /* Keep aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure videos behave like images */
+.photo video {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .user-photos {
+        column-count: 3; /* 3 per row on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .user-photos {
+        column-count: 2; /* 2 per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .user-photos {
+        column-count: 1; /* 1 per row on phones */
+    }
+}
+
+/* Footer Section */
+.footer {
+    width: auto;
+    padding: 20px;
+    text-align: left; 
+    z-index: 10;
+}
+
+/* Contact Details Styling */
+.contact-details {
+    font-family: Helvetica, sans-serif;
+    font-size: 30px;
+    color: #2C59CA;
+    margin-top: 60px;
+    margin-left: 55px;
+}
+
+@media (max-width: 768px) {
+    .contact-details {
+        font-size: 24px; /* Smaller font size for tablets */
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-details {
+        font-size: 18px; /* Smaller font size for phones */
+        margin-left: 20px;
+    }
+}
+
+/* Styling for Footer Links */
+.contact-details a {
+    color: #2C59CA;
+    text-decoration: none;
+    margin-left: 0px; /* Space between links */
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}

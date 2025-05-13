@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Gorshkova - Portfolio</title>
+    <!-- Favicon Link -->
+    <link rel="icon" href="favicon/favicon.jpg" type="image/jpg">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Check if we came directly to this page or from the loading page
+        if (!sessionStorage.getItem("loadedIndex")) {
+            // Set a flag in sessionStorage to prevent redirect loops
+            sessionStorage.setItem("loadingRedirect", "true");
+            // Redirect to loading.html
+            window.location.href = "loading.html?page=index.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <a class="name" href="index.html">ALYSSA GORSHKOVA</a>
+        <nav>
+            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="gallery.html">Gallery</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <img class="portfolio-title-img" src="img/png.png" alt="Portfolio">
+        
+        <div class="subtitle">Graphic Designer & Web Developer</div>
+        <div class="email">alyssagorsh13@gmail.com</div>
+        <p class="description">
+            Hey there! I'm Alyssa Gorshkova, a second-year Design & Digital Media 
+            student at Whitecliffe College of Arts and Design. I'm all about exploring 
+            different facets of design—whether it's graphic design, web development, 
+            motion graphics, or 3D design, I love experimenting and pushing boundaries. I don't like to limit myself to just one thing because, well, why not be a 
+            jack of all trades, right? Creativity has no boundaries, and I enjoy learning 
+            and mastering whatever catches my interest. If you're looking for someone 
+            who's passionate, versatile, and always up for a challenge, I think I'd be
+            a perfect fit for your team. Let's create something
+            amazing together! xoxo
+        </p>
+            
+        <!-- Right-aligned Image from the Internet -->
+        <div class="image-placeholder">
+            <img src="https://i.pinimg.com/736x/79/45/d2/7945d2334a3271829125a6d7f67029ba.jpg" alt="Image description">
+        </div>
+    </main>
+
+    <!-- Projects Section -->
+    <div id="projects">
+        <!-- Carousel with one looping video -->
+        <div class="carousel-container">
+            <video class="carousel-video" autoplay loop muted>
+                <source src="myvideo.mp4/Comp 1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script src="scriptgallery.js"></script>
+
+    <!-- Footer Section with Contact Details -->
+    <footer class="footer">
+        <div class="contact-details">
+            <p>Email: alyssagorsh13@gmail.com</p>
+            <p><a href="https://www.linkedin.com/in/alyssa-gorshkova-7945332ab/" target="_blank">LinkedIn</a></p>
+            <p><a href="https://www.instagram.com/alyssadesignz/" target="_blank">Instagram</a></p>
+            <p><a href="https://www.behance.net/alyssagorshkova" target="_blank">Behance</a></p>
+            <p><a href="https://github.com/alyssagorshkova" target="_blank">GitHub</a></p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <input type="checkbox" id="darkModeToggle" class="toggle-input">
+        <label for="darkModeToggle" class="toggle-label">
+            <span class="toggle-icon light">☀️</span>
+            <span class="toggle-icon dark">🌙</span>
+            <span class="toggle-switch"></span>
+        </label>
+    </div>
+
+    <script>
+        // Clear the sessionStorage flag when the page is about to be unloaded
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem("loadedIndex");
+        });
+
+        // Get the toggle checkbox for dark mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        // Check if user preference exists in localStorage
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
+        
+        // Listen for changes on the toggle switch to enable/disable dark mode
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                // Enable Dark Mode
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                // Disable Dark Mode
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // Ensure dark mode is applied on page load based on previous user preference
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
